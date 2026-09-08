@@ -73,18 +73,19 @@ shivakumar@aviation-de:~$ neofetch
 
 ---
 
-## 📊 The 5 Delay Columns — Domain Decoded
+## 📊 The 5 Delay Columns — Domain Context
 
 > *Before writing a single line of code, I studied the IOC — the nerve centre of every airline.*
+> *BTS records delay categories as reported. This project uses domain knowledge to contextualise them — not to overclaim causation.*
 
-| Column | What Generated It | Domain Source |
-|--------|------------------|---------------|
-| `CARRIER_DELAY` | MEL faults · crew duty breaches · aircraft swaps · GPU failures · fuelling decisions | Ch 4 — Engineering + Crewing |
-| `WEATHER_DELAY` | Fog · crosswinds · thunderstorms · snow · heat · Safety pillar override | Ch 4 — Weather |
-| `NAS_DELAY` | ATC ground stops · GDPs · runway closures · airspace restrictions | Ch 4 — Air Traffic |
-| `SECURITY_DELAY` | Terminal evacuations · re-screening · overflight clearances | Ch 1 — Safety pillar |
-| `LATE_AIRCRAFT_DELAY` | Propagation signal. Previous rotation was late. Schedule too tight. | Ch 3 — Robustness |
-| **`NULL (84% of rows)`** | ← **SUCCESS.** IOC recovered on time. Not missing data. | Ch 1 — Efficiency pillar |
+| Column | BTS Definition | Domain Context (DERIVED — not BTS truth) |
+|--------|---------------|------------------------------------------|
+| `CARRIER_DELAY` | Delay within airline control as reported | May include MEL faults · crew issues · aircraft swaps · GPU failures · fuelling — BTS does not specify which |
+| `WEATHER_DELAY` | Weather conditions as reported by carrier | Consistent with fog · crosswinds · thunderstorms · snow · heat scenarios |
+| `NAS_DELAY` | National Airspace System delay as reported | Consistent with ATC ground stops · GDPs · runway closures · congestion |
+| `SECURITY_DELAY` | Security delay as reported | Consistent with screening events · terminal issues |
+| `LATE_AIRCRAFT_DELAY` | Late arriving aircraft as reported | Interpreted as cascade propagation signal — schedule robustness indicator |
+| **`NULL in cause fields`** | Delay-cause fields not populated | Preserved as-is. Expected for flights where reportable delay-cause values are absent. Not treated as failure or success. |
 
 ---
 
