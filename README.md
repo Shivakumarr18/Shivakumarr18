@@ -186,6 +186,6 @@ Standard        Sachin Standard — type hints · docstrings · errors as UI
 
 *Building in public. Domain first. Code second. Insights always.*
 
-**Industry Advisors:** Marimuthu (Etihad) · Luis R. Meza (Aviation Director) · Jack Yang (Airlines CEO)
+**Industry Advisors:** · Luis R. Meza (Aviation Director) · Jack Yang (Airlines CEO)
 
 </div>
