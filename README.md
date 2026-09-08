@@ -1,8 +1,10 @@
 <div align="center">
 
-![Aviation](https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=80)
+![Aviation](https://images.unsplash.com/photo-1707343848552-893e05dba6ac?w=1200&q=80)
 
 # ✈️ Aviation
+
+*Photo by Soekarno Omar — Into the Blue Fly*
 
 </div>
 
@@ -21,8 +23,8 @@ shivakumar@aviation-de:~$ neofetch
           ✈  climbing to cruise          Role ............. Associate Engineer → Data Engineer
         /                                Company .......... CAMP Systems (Aviation MRO Software)
        /   BTS Aviation Delay            Experience ....... 3.5 years
-      /    Intelligence System          
-     /     18M+ rows · 2023-2025
+      /    Intelligence System           Target ........... Data Engineering | October–November 2026
+     /     20.9M rows · 2023–2025
     /                                    Languages ........ Python · SQL · PySpark
                                          Cloud ............ Azure Databricks · ADLS Gen2
                                          Pipeline ......... Bronze → Silver → Gold (Medallion)
@@ -30,87 +32,166 @@ shivakumar@aviation-de:~$ neofetch
                                          Domain ........... Aviation Operations (IOC/OCC)
                                          Visualisation .... Power BI
 
+                                         Advisor .......... Brother (Data Architect, Netflix) — 9.5/10
+                                         Industry ......... Marimuthu (Etihad) · Luis R. Meza (Aviation Director)
                                          GitHub ........... Shivakumarr18
+                                         Standard ......... Sachin Standard 🏏
                                          Streak ........... Never breaks. Laptop travels everywhere.
 ```
 
 ---
 
-## 🏗️ BTS Aviation Delay Intelligence System
+## ✈️ BTS Aviation Delay Intelligence System
 
-> *"Every row in aviation operational data is a record of a human decision made under pressure."*
+> *"20.9M rows. 3 years. 15 carriers. 294 airports. One star schema. Built from scratch."*
 
 ```
-  BTS TranStats (2023-2025)
-  ~570K rows/month · 43 columns
+  BTS TranStats — US Bureau of Transportation Statistics
+  January 2023 → December 2025  |  36 CSV files  |  ~4GB raw
            │
            ▼
-    ┌─────────────┐
-    │   BRONZE    │  Raw ingestion. Immutable. Append-only. Nulls preserved.
-    └──────┬──────┘
-           │
-           ▼
-    ┌─────────────┐
-    │   SILVER    │  Cleaned. Validated. Null rules enforced.
-    └──────┬──────┘
-           │
-           ▼
-    ┌─────────────┐
-    │    GOLD     │  Kimball Star Schema. fact_delays + 5 dimensions. Power BI ready.
-    └─────────────┘
+    ┌──────────────────────────────────────────────────────┐
+    │   BRONZE                                             │
+    │   36/36 partitions  ·  20,928,599 rows               │
+    │   Immutable · Append-only · Parquet · YEAR/MONTH     │
+    └──────────────────────┬───────────────────────────────┘
+                           │
+                           ▼
+    ┌──────────────────────────────────────────────────────┐
+    │   SILVER  v4.0  ·  FROZEN  ·  Brother rated 9.5/10  │
+    │   12 validation gates per partition                  │
+    │   20,928,599 rows  ·  NULLs preserved. Never filled. │
+    └──────────────────────┬───────────────────────────────┘
+                           │
+                           ▼
+    ┌──────────────────────────────────────────────────────┐
+    │   GOLD  ·  Kimball Star Schema                       │
+    │   fact_delays + 5 dimensions + bridge table          │
+    │   Cost model separated  ·  IOC pillars mapped        │
+    │   Local TEST_MODE: 8/8 TCG passed                    │
+    │   Azure Full Run: IN PROGRESS ← TODAY                │
+    └──────────────────────────────────────────────────────┘
+                           │
+                           ▼
+              Power BI  ·  REST API  ·  AI Interface
 ```
 
 ---
 
 ## 📊 The 5 Delay Columns — Domain Decoded
 
-| Column | What Generated It |
-|--------|------------------|
-| `CARRIER_DELAY` | MEL faults · crew duty breaches · aircraft swaps · GPU failures |
-| `WEATHER_DELAY` | Fog · crosswinds · thunderstorms · snow · Safety pillar override |
-| `NAS_DELAY` | ATC ground stops · GDPs · runway closures · airspace restrictions |
-| `SECURITY_DELAY` | Terminal evacuations · re-screening · overflight clearances |
-| `LATE_AIRCRAFT_DELAY` | Propagation signal. Previous rotation was late. Schedule too tight. |
-| `NULL (84% of rows)` | ← **SUCCESS.** IOC recovered on time. Not missing data. |
+> *Before writing a single line of code, I studied the IOC — the nerve centre of every airline.*
+
+| Column | What Generated It | Domain Source |
+|--------|------------------|---------------|
+| `CARRIER_DELAY` | MEL faults · crew duty breaches · aircraft swaps · GPU failures · fuelling decisions | Ch 4 — Engineering + Crewing |
+| `WEATHER_DELAY` | Fog · crosswinds · thunderstorms · snow · heat · Safety pillar override | Ch 4 — Weather |
+| `NAS_DELAY` | ATC ground stops · GDPs · runway closures · airspace restrictions | Ch 4 — Air Traffic |
+| `SECURITY_DELAY` | Terminal evacuations · re-screening · overflight clearances | Ch 1 — Safety pillar |
+| `LATE_AIRCRAFT_DELAY` | Propagation signal. Previous rotation was late. Schedule too tight. | Ch 3 — Robustness |
+| **`NULL (84% of rows)`** | ← **SUCCESS.** IOC recovered on time. Not missing data. | Ch 1 — Efficiency pillar |
+
+---
+
+## 🏗️ Architecture Decision Records
+
+| ADR | Decision | Why |
+|-----|----------|-----|
+| ADR-GOLD-001 | Snapshot dimensions for v1 | No attribute change events in BTS. Fake SCD2 is dishonest. |
+| ADR-GOLD-002 | Bridge table for delay reasons | One flight can have multiple causes. Single FK discards information. |
+| ADR-GOLD-003 | `operational_influence_class` not `is_controllable` | BTS cannot prove controllability. Binary True/False overclaims. |
+| ADR-GOLD-004 | `monotonically_increasing_id` for v1 | SHA-256 deferred to Azure v2. |
+| ADR-GOLD-005 | Cost model in separate tables | Observed ≠ Modeled. Evidence boundary must be explicit. |
+| ADR-GOLD-006 | Aircraft keyed by `tail_number` only | Including carrier_code causes fan-out across operators. |
 
 ---
 
 ## 🧠 Domain Foundation
 
 ```
-Before writing a single line of code:
+📖 Peter J. Bruce — Airline Operations Control
 
-  📖 Peter J. Bruce — Airline Operations Control
+   Ch 1  →  What the IOC is. Three pillars: Safety > Legality > Efficiency.
+             Every delay column maps to one of these three.
 
-     Ch 1 → What the IOC is. Three pillars: Safety > Legality > Efficiency.
-     Ch 3 → How the schedule is built. Slots. Curfews. Schedule robustness.
-     Ch 4 → What happens when the plan breaks. IROPS. Every column decoded.
+   Ch 3  →  How the schedule is built months before the day.
+             Hub vs point-to-point. Slots. Curfews. Schedule robustness.
+
+   Ch 4  →  What happens when the plan breaks.
+             IROPS spectrum. Every disruption type decoded to its BTS column.
+
+   Ch 5  →  How information flows during disruption.
+             Cascade intelligence. Information propagation patterns.
+
+📄 Ferguson et al. (FAA/NEXTOR 2010)
+   → US airline cost-of-delay: $45/min reference.
+   → Airborne delay costs ~20x ground delay per minute.
+   → Applied to Gold layer cost sensitivity calculator.
 ```
 
 ---
 
-## 🏆 Architecture Decision Records
+## 📈 Current Status — September 2026
 
-| ADR | Decision | Rationale |
-|-----|----------|-----------|
-| ADR-GOLD-001 | SCD Type 1 for dimensions | Operational simplicity. Current state is what matters. |
-| ADR-GOLD-002 | Delay reason as separate dimension | CARRIER_DELAY is composite. Not atomic. Cannot be treated as one. |
-| ADR-GOLD-003 | Surrogate keys over natural keys | Isolation from source system changes. Kimball standard. |
-| ADR-GOLD-004 | Cost model separated from fact table | Assumptions must be explicit and auditable. |
-| ADR-GOLD-005 | Aircraft dimension included | TAIL_NUM enables cascade chain analysis across rotations. |
-| ADR-GOLD-006 | ARR_DELAY nulls for cancellations preserved | Cancelled flights have no arrival. NULL is correct. Never fill with 0. |
+| Layer | Local | Azure | Evidence |
+|-------|-------|-------|----------|
+| Health Check | ✅ 14/14 | — | Pre-ingestion. All 36 CSVs validated. |
+| Bronze | ✅ 36/36 | ✅ 36/36 | 20,928,599 rows. Parquet. Immutable. |
+| Silver v4.0 | ✅ 36/36 | ✅ Uploaded | 20,928,599 rows. 12 gates. Frozen. |
+| Gold TEST_MODE | ✅ 8/8 TCG | — | 99,972 rows. 36/36 partitions covered. |
+| Gold Full Run | ⏳ Fix needed | ⏳ PENDING | `os.path.exists` → ADLS fix. Today. |
+| GCG 10 checks | ⏳ | ⏳ | After Gold Azure run passes. |
+| Power BI | 🔲 | 🔲 | After Gold Azure evidence. |
+| REST API | 🔲 | 🔲 | After Power BI. |
+
+---
+
+## 🛠️ Tech Stack
+
+```
+Language        Python 3.11 · SQL
+Processing      PySpark 3.x · Azure Databricks
+Storage         Azure Data Lake Storage Gen2 · Parquet
+Orchestration   Azure Data Factory (planned)
+Visualisation   Power BI
+Format          Medallion Architecture (Bronze → Silver → Gold)
+Schema          Kimball Star Schema
+Evidence states OBSERVED · DERIVED · MODELED · INFERRED · UNKNOWN
+Standard        Sachin Standard — type hints · docstrings · errors as UI
+```
+
+---
+
+## 🎯 Platform Boundary — What This System Is and Is Not
+
+```
+✅  CAN DO
+    Historical delay pattern analysis
+    Carrier performance comparison
+    Route exposure quantification
+    Tail number cascade propagation
+    Cost sensitivity modelling (cited assumptions)
+
+❌  CANNOT DO
+    Real-time IOC operational control
+    Live crew legality assessment
+    Live weather or ATC feed
+    Passenger-level impact tracking
+```
 
 ---
 
 <div align="center">
 
 ```
-  Destination : Data Engineer | October 2026
-  Altitude    : Climbing
-  Fuel        : Domain Knowledge + Technical Depth
+  Destination : Data Engineer | October–November 2026
+  Altitude    : Climbing through Gold layer
+  Fuel        : Domain Knowledge + Technical Depth + 20.9M rows
   ETA         : On Schedule
 ```
 
 *Building in public. Domain first. Code second. Insights always.*
+
+**Industry Advisors:** Marimuthu (Etihad) · Luis R. Meza (Aviation Director) · Jack Yang (Airlines CEO)
 
 </div>
