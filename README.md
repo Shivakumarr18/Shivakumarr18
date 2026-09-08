@@ -18,9 +18,9 @@ shivakumar@aviation-de:~$ neofetch
 
 ```
                                         Name ............. Narsing Shiva Kumar
-          ✈  climbing to cruise          Role ............. Associate Engineer → Data Engineer
+✈  climbing to cruise
         /                                Company .......... CAMP Systems (Aviation MRO Software)
-       /   BTS Aviation Delay            Experience ....... 3.5 years
+       /   BTS Aviation Delay            E
       /    Intelligence System           
      /     20.9M rows · 2023–2025
     /                                    Languages ........ Python · SQL · PySpark
@@ -53,7 +53,7 @@ shivakumar@aviation-de:~$ neofetch
                            │
                            ▼
     ┌──────────────────────────────────────────────────────┐
-    │   SILVER  v4.0  ·  FROZEN  ·  Brother rated 9.5/10  │
+    │   SILVER  v4.0  ·  FROZEN  ·   │
     │   12 validation gates per partition                  │
     │   20,928,599 rows  ·  NULLs preserved. Never filled. │
     └──────────────────────┬───────────────────────────────┘
@@ -152,7 +152,7 @@ Visualisation   Power BI
 Format          Medallion Architecture (Bronze → Silver → Gold)
 Schema          Kimball Star Schema
 Evidence states OBSERVED · DERIVED · MODELED · INFERRED · UNKNOWN
-Standard        Sachin Standard — type hints · docstrings · errors as UI
+Standard        type hints · docstrings · errors as UI
 ```
 
 ---
