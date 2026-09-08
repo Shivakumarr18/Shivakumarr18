@@ -21,7 +21,7 @@ shivakumar@aviation-de:~$ neofetch
           ✈  climbing to cruise          Role ............. Associate Engineer → Data Engineer
         /                                Company .......... CAMP Systems (Aviation MRO Software)
        /   BTS Aviation Delay            Experience ....... 3.5 years
-      /    Intelligence System           Target ........... Data Engineering | October 2026
+      /    Intelligence System          
      /     18M+ rows · 2023-2025
     /                                    Languages ........ Python · SQL · PySpark
                                          Cloud ............ Azure Databricks · ADLS Gen2
@@ -31,7 +31,6 @@ shivakumar@aviation-de:~$ neofetch
                                          Visualisation .... Power BI
 
                                          GitHub ........... Shivakumarr18
-                                         Standard ......... Sachin Standard 🏏
                                          Streak ........... Never breaks. Laptop travels everywhere.
 ```
 
