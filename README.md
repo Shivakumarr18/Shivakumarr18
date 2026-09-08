@@ -4,8 +4,6 @@
 
 # ✈️ Aviation
 
-*Photo by Tim Dennert — White Emirates Aircraft — Unsplash*
-
 </div>
 
 ---
