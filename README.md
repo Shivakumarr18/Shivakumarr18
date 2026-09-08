@@ -53,7 +53,7 @@ shivakumar@aviation-de:~$ neofetch
                            │
                            ▼
     ┌──────────────────────────────────────────────────────┐
-    │   SILVER  v4.0  ·  FROZEN  ·   │
+    │   SILVER  v4.0  ·  FROZEN  
     │   12 validation gates per partition                  │
     │   20,928,599 rows  ·  NULLs preserved. Never filled. │
     └──────────────────────┬───────────────────────────────┘
