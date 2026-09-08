@@ -20,7 +20,7 @@ shivakumar@aviation-de:~$ neofetch
                                         Name ............. Narsing Shiva Kumar
 ✈  climbing to cruise
         /                                Company .......... CAMP Systems (Aviation MRO Software)
-       /   BTS Aviation Delay            E
+       /   BTS Aviation Delay            
       /    Intelligence System           
      /     20.9M rows · 2023–2025
     /                                    Languages ........ Python · SQL · PySpark
