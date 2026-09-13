@@ -52,16 +52,17 @@ The system transforms raw flight records into a validated analytical model desig
 
 ### Architecture
 
-| Layer | Technology | Status |
-|---|---|---|
-| Source | BTS TranStats | ✅ Complete |
-| Bronze | PySpark · Parquet · ADLS Gen2 | ✅ Complete |
-| Silver | PySpark · 12 validation gates | ✅ Complete |
-| Gold | Kimball Star Schema | ✅ Complete |
-| Cloud | Azure Databricks · ADLS Gen2 | ✅ Complete |
-| BI | Power BI | 🔲 Next |
-| API | REST API | 🔲 Planned |
-| AI | AI Interface | 🔲 Planned |
+| Stage | Status |
+|---|---|
+| Source validation | ✅ Complete |
+| Bronze layer | ✅ Complete |
+| Silver layer | ✅ Complete |
+| Gold dimensional model | ✅ Complete |
+| Azure validation | ✅ Complete |
+| Semantic / business layer | 🔲 Next |
+| Power BI analytics | 🔲 Planned |
+| REST API | 🔲 Planned |
+| AI Analyst interface | 🔲 Planned |
 
 ### Scale
 
@@ -205,9 +206,9 @@ The goal is to clearly distinguish what the available data can demonstrate from 
 | Silver layer | ✅ Complete |
 | Gold dimensional model | ✅ Complete |
 | Azure validation | ✅ Complete |
-| Power BI analytics | 🔲 Next |
+| Semantic / business layer | 🔲 Next |
+| Power BI analytics | 🔲 Planned |
 | REST API | 🔲 Planned |
-| Semantic / business layer | 🔲 Planned |
 | AI Analyst interface | 🔲 Planned |
 
 ### Long-term direction
@@ -222,20 +223,23 @@ The objective is to build the **trusted data foundation that makes AI analysis d
 
 # 📂 Projects
 
-### ✈️ BTS Aviation Delay Intelligence
-20M+ US flight records · PySpark · Azure Databricks · ADLS Gen2 · Star Schema
+### ✈️ BTS Aviation Delay Intelligence — Core Project
+20M+ US flight records · PySpark · Azure Databricks · ADLS Gen2 · Kimball Star Schema
+
+End-to-end medallion pipeline on 3 years of US domestic flight data.
+Bronze → Silver → Gold. 9/9 artifacts. 10/10 completion gates. Azure validated.
 
 👉 [View Repository](https://github.com/Shivakumarr18/BTS-Aviation-Delay-Intelligence)
 
-### 🛫 NASA ASRS Pipelines
-Aviation safety data engineering pipeline using Python, SQL and structured transformation workflows.
+---
+
+### 🛫 NASA ASRS Pipelines — Practice Project
+Aviation safety data engineering pipeline built before the core project.
+Python · SQL · MySQL · Medallion architecture · 4,500 NASA safety reports.
+
+Built to develop foundational pipeline skills before working at production scale.
 
 👉 [View Repository](https://github.com/Shivakumarr18/NASA-ASRS-Pipelines)
-
-### 📚 Data Engineering Interview Prep
-SQL · Python · PySpark · Data Engineering interview preparation.
-
-👉 [View Repository](https://github.com/Shivakumarr18/DE-Interview-Prep)
 
 ---
 
