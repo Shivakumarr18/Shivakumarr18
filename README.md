@@ -1,6 +1,6 @@
 <div align="center">
 
-![Aviation](https://images.unsplash.com/photo-1567446188601-95f43044f6dc?w=1200&q=80)
+![Aviation](https://media.istockphoto.com/id/973116956/photo/airplane-snowstorm.webp?a=1&b=1&s=612x612&w=0&k=20&c=iGWUTU139s16NR6qCsS6ZAbTXnWHdX1YWyibH-8_FNI=)
 
 </div>
 
