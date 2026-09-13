@@ -2,313 +2,249 @@
 
 ![Aviation](https://images.unsplash.com/photo-1567446188601-95f43044f6dc?w=1200&q=80)
 
+</div>
+
+---
+
+<div align="center">
+
+# ✈️ Aviation
+
+### Aviation Data Engineering | Python · SQL · PySpark · Azure
+
+Building reliable data systems for aviation analytics — with a long-term focus on AI-ready data platforms.
+
+[![GitHub](https://img.shields.io/badge/GitHub-Shivakumarr18-181717?style=flat&logo=github)](https://github.com/Shivakumarr18)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat&logo=linkedin)](https://www.linkedin.com/)
+
+📍 Hyderabad, India
 
 </div>
 
 ---
 
-✈️ Aviation Data Engineering
-
-shivakumar@aviation-de:~$ neofetch
-
-Name ............. Narsing Shiva Kumar
-Role ............. Associate Engineer → Data Engineer
-Company .......... CAMP Systems (Aviation MRO Software)
-Languages ........ Python · SQL · PySpark
-Cloud ............ Azure Databricks · ADLS Gen2
-Pipeline ......... Bronze → Silver → Gold
-Architecture ..... Medallion + Kimball Star Schema
-Domain ........... Aviation Operations (IOC/OCC)
-Visualisation .... Power BI
-GitHub ........... Shivakumarr18
-Streak ........... Never breaks. Laptop travels everywhere.
+## 👋 About
 
-✈️ BTS Aviation Delay Intelligence System
+I'm an Associate Engineer at **CAMP Systems**, working in aviation software and building toward Data Engineering.
 
-20.9M rows. 3 years. 15 carriers. 294 airports. One analytical model. Built from scratch.
+My current focus is on developing strong foundations in:
 
-BTS TranStats — US Bureau of Transportation Statistics
-January 2023 → December 2025 | 36 monthly partitions | ~4GB raw
-        │
-        ▼
-BRONZE  ✅ COMPLETE
-36/36 partitions · 20,928,599 rows
-Immutable · Append-only · Parquet · YEAR/MONTH
-        │
-        ▼
-SILVER v4.0  ✅ COMPLETE
-12 validation gates per partition
-20,928,599 rows · NULLs preserved
-        │
-        ▼
-GOLD · Kimball Star Schema  ✅ COMPLETE
-9/9 artifacts · 10/10 GCG passed
-fact_delays + 5 dims + bridge + 2 cost models
-Azure Databricks · Standard_F4 · East US
-Evidence captured: 2026-09-13
-        │
-        ▼
-Power BI · REST API · AI Interface
-⏳ NEXT
+- Data Engineering
+- Aviation analytics
+- Distributed data processing
+- Cloud data platforms
+- Data quality and validation
+- AI-ready analytical systems
 
-🏆 Gold Layer — Azure Evidence
+I care less about simply moving data and more about building **trusted data foundations that can support reliable business analysis and AI applications.**
 
-Cluster  : Standard_F4 · East US · Azure Databricks
-Storage  : ADLS Gen2 · btsaviation
-Input    : 20,928,599 rows (Silver · Jan 2023 – Dec 2025)
+---
 
-GOLD ARTIFACTS (9/9):
-  dim_date                   ✅
-  dim_carrier                ✅
-  dim_airport                ✅
-  dim_aircraft               ✅
-  dim_delay_reason           ✅
-  fact_delays                ✅
-  bridge_flight_delay_reason ✅
-  model_cost_scenario        ✅
-  model_delay_cost           ✅
+# ✈️ Featured Project
 
-GOLD COMPLETION GATE (10/10):
-  GCG 01 — Artifacts exist      ✅ (9/9)
-  GCG 02 — Row count            ✅ (20,928,599)
-  GCG 03 — Grain uniqueness     ✅ (0 duplicates)
-  GCG 04 — NULL foreign keys    ✅ (all zeros)
-  GCG 05 — UNKNOWN members      ✅ (all 5 dims)
-  GCG 06 — Surrogate key unique ✅ (all dims)
-  GCG 07 — Partition count      ✅ (36/36)
-  GCG 08 — arr_delay_mins       ✅ (152,637,336)
-  GCG 09 — Cancellation count   ✅ (287,134)
-  GCG 10 — Bridge integrity     ✅ (7,072,280 rows)
+## BTS Aviation Delay Intelligence System
 
-STATUS: GOLD LAYER COMPLETE ON AZURE ✅
+**20.9M flight records · 3 years · 36 monthly partitions · Azure**
 
-📊 Delay-Cause Columns — Domain Context
+An end-to-end aviation data engineering platform built using US Bureau of Transportation Statistics flight data.
 
-Before writing the analytical model, I studied airline operations and the role of the IOC — the operational nerve centre of an airline.
+The system transforms raw flight records into a validated analytical model designed for downstream BI, APIs and eventually an AI interface.
 
-BTS records delay categories as reported. This project uses aviation domain knowledge to contextualise those categories — not to overclaim causation.
+### Architecture
 
-Column
+| Layer | Technology | Status |
+|---|---|---|
+| Source | BTS TranStats | ✅ Complete |
+| Bronze | PySpark · Parquet · ADLS Gen2 | ✅ Complete |
+| Silver | PySpark · 12 validation gates | ✅ Complete |
+| Gold | Kimball Star Schema | ✅ Complete |
+| Cloud | Azure Databricks · ADLS Gen2 | ✅ Complete |
+| BI | Power BI | 🔲 Next |
+| API | REST API | 🔲 Planned |
+| AI | AI Interface | 🔲 Planned |
 
-BTS Definition
+### Scale
 
-Domain Context — DERIVED, not BTS truth
+| Metric | Value |
+|---|---:|
+| Source period | Jan 2023 – Dec 2025 |
+| Silver records | **20,928,599** |
+| Monthly partitions | **36** |
+| Raw data | ~4 GB |
+| Carriers | 15 |
+| Airports | 294 |
 
-CARRIER_DELAY
+---
 
-Delay within airline control as reported
+## 🏆 Gold Layer — Azure Validation
 
-May be consistent with airline-controlled operational issues such as crew, aircraft, maintenance or ground-service factors. BTS does not specify the underlying event.
+The Gold layer has been completed on Azure Databricks with explicit completion gates.
 
-WEATHER_DELAY
+| Validation | Result |
+|---|---:|
+| Gold artifacts | **9 / 9 PASS** |
+| Completion gates | **10 / 10 PASS** |
+| Grain duplicates | **0** |
+| NULL foreign keys | **0** |
+| Unknown dimension members | **Validated** |
+| Surrogate-key uniqueness | **Validated** |
+| Partitions | **36 / 36** |
+| Arrival-delay minutes | **152,637,336** |
+| Cancellations | **287,134** |
+| Bridge records | **7,072,280** |
 
-Weather conditions as reported by carrier
+**Azure evidence captured:** September 13, 2026
 
-Consistent with operational effects associated with adverse weather scenarios.
+---
 
-NAS_DELAY
+## 🧱 Gold Model
 
-National Airspace System delay as reported
+The analytical model currently contains:
 
-Consistent with ATC restrictions, congestion, ground stops and other NAS-related constraints.
+| Artifact | Purpose |
+|---|---|
+| `dim_date` | Date analysis |
+| `dim_carrier` | Carrier analysis |
+| `dim_airport` | Airport analysis |
+| `dim_aircraft` | Aircraft / tail-number analysis |
+| `dim_delay_reason` | Delay-cause analysis |
+| `fact_delays` | Core flight-delay facts |
+| `bridge_flight_delay_reason` | Multi-cause delay relationships |
+| `model_cost_scenario` | Cost sensitivity assumptions |
+| `model_delay_cost` | Modeled delay-cost outputs |
 
-SECURITY_DELAY
+---
 
-Security delay as reported
+## 🧠 Engineering Principles
 
-Represents delays attributed to security-related circumstances.
+### Evidence boundaries
 
-LATE_AIRCRAFT_DELAY
+The system explicitly separates:
 
-Late arriving aircraft as reported
+**OBSERVED → DERIVED → MODELED → INFERRED → UNKNOWN**
 
-Used as a potential cascade-propagation signal and schedule-robustness indicator.
-
-NULL in cause fields
-
-Delay-cause fields not populated
-
-Preserved as-is. Not interpreted as either “no cause” or “unknown cause” without supporting evidence.
-
-🏗️ Architecture Decision Records
-
-ADR
-
-Decision
-
-Why
-
-ADR-GOLD-001
-
-Snapshot dimensions for v1
-
-BTS does not provide the attribute-change history required to justify a traditional SCD2 implementation.
-
-ADR-GOLD-002
-
-Bridge table for delay reasons
-
-A flight can contain multiple reported delay causes. A single FK would discard information.
-
-ADR-GOLD-003
-
-operational_influence_class instead of is_controllable
-
-BTS cannot establish whether a delay was operationally controllable. A binary label would overclaim.
-
-ADR-GOLD-004
-
-monotonically_increasing_id for v1
-
-SHA-256-based deterministic keys deferred to a future Azure implementation.
-
-ADR-GOLD-005
-
-Cost model in separate tables
-
-Observed operational metrics and modeled cost assumptions must remain explicitly separated.
-
-ADR-GOLD-006
-
-Aircraft keyed by tail_number
-
-Avoids unnecessary fan-out caused by combining aircraft identity with carrier ownership.
-
-🧠 Domain Foundation
-
-📖 Peter J. Bruce — Airline Operations Control
-
-Ch 1 → IOC fundamentals.
-       Safety, legality and efficiency as operational priorities.
-
-Ch 3 → How airline schedules are constructed.
-       Hubs, point-to-point networks, slots, curfews and robustness.
-
-Ch 4 → What happens when the operating plan breaks.
-       IROPS and disruption propagation.
-
-Ch 5 → How operational information moves during disruption.
-       Coordination and information propagation.
-
-📄 Ferguson et al. (FAA/NEXTOR 2010)
-
-→ $45/min reference for US airline delay-cost analysis.
-→ Airborne delay costs substantially exceed equivalent ground delay.
-→ Used only as a cited assumption in the Gold cost-sensitivity model.
-
-📈 Current Status — September 2026
-
-Layer
-
-Local
-
-Azure
-
-Evidence
-
-Health Check
-
-✅ 14/14
-
-—
-
-36 CSVs validated before ingestion
-
-Bronze
-
-✅ 36/36
-
-✅ 36/36
-
-20,928,599 rows · Parquet
-
-Silver v4.0
-
-✅ 36/36
-
-✅ Complete
-
-12 validation gates · frozen
-
-Gold
-
-✅ Complete
-
-✅ Complete
-
-9/9 artifacts · Kimball star schema
-
-Gold GCG
-
-✅ 10/10
-
-✅ 10/10
-
-0 duplicate grains · 0 NULL FKs
-
-Power BI
-
-🔲
-
-🔲
-
-Next
-
-REST API
-
-🔲
-
-🔲
-
-After Power BI
-
-AI Interface
-
-🔲
-
-🔲
-
-Final application layer
-
-🛠️ Tech Stack
-
-Language        Python 3.11 · SQL
-Processing      PySpark 3.x · Azure Databricks
-Storage         Azure Data Lake Storage Gen2 · Parquet
-Orchestration   Azure Data Factory (planned)
-Visualisation   Power BI
-Architecture    Medallion Architecture · Kimball Star Schema
-Evidence states OBSERVED · DERIVED · MODELED · INFERRED · UNKNOWN
-
-Engineering standard:
-    Type hints · docstrings · explicit validation · structured logging
-    · failure visibility · reproducible evidence
-
-🎯 Platform Boundary — What This System Is and Is Not
-
-✅ CAN DO
-   Historical delay pattern analysis
-   Carrier performance comparison
-   Route exposure quantification
-   Tail-number cascade analysis
-   Delay-cause distribution analysis
-   Cost sensitivity modelling using cited assumptions
-
-❌ CANNOT DO
-   Real-time IOC operational control
-   Live crew legality assessment
-   Live weather or ATC feed analysis
-   Passenger-level impact tracking
-   Real-time disruption prediction
-   Prescriptive operational recommendations
+This prevents analytical assumptions from being presented as source facts.
+
+### Key architecture decisions
+
+| Decision | Reason |
+|---|---|
+| Snapshot dimensions | BTS does not provide sufficient history for justified SCD2 |
+| Bridge table | A flight can have multiple reported delay causes |
+| `operational_influence_class` | Avoids unsupported claims about controllability |
+| Separate cost models | Observed metrics and modeled assumptions remain distinct |
+| Tail-number aircraft key | Avoids unnecessary fan-out across carriers |
+
+---
+
+# 🛠️ Technical Stack
+
+| Area | Technologies |
+|---|---|
+| Languages | Python · SQL |
+| Processing | PySpark |
+| Cloud | Microsoft Azure |
+| Compute | Azure Databricks |
+| Storage | ADLS Gen2 · Parquet |
+| Architecture | Medallion Architecture |
+| Data Modeling | Kimball Star Schema |
+| Orchestration | Azure Data Factory |
+| Visualization | Power BI |
+| Future Interface | REST API · AI Interface |
+
+---
+
+# ✈️ Aviation Domain Focus
+
+The project is intentionally grounded in airline operational concepts including:
+
+- IOC / OCC operations
+- Irregular Operations (IROPS)
+- Delay propagation
+- Schedule robustness
+- Airline network operations
+- Delay-cause analysis
+- Operational cost sensitivity
+
+BTS delay categories are treated as **reported source information**. Aviation domain knowledge is used to contextualize the data without claiming unsupported causation.
+
+---
+
+# 🎯 Platform Boundary
+
+### Currently supported
+
+- Historical delay analysis
+- Carrier performance analysis
+- Airport and route exposure analysis
+- Tail-number cascade analysis
+- Delay-cause distribution
+- Cost sensitivity modeling
+
+### Not currently supported
+
+- Real-time IOC control
+- Live crew legality
+- Live weather / ATC feeds
+- Passenger-level impact
+- Real-time disruption prediction
+- Prescriptive operational recommendations
 
 These boundaries are intentional.
 
-The system distinguishes what the source data can demonstrate from what would require additional operational datasets, validated predictive models and real-time integrations.
+The goal is to clearly distinguish what the available data can demonstrate from what would require additional operational datasets and real-time integrations.
 
-Direction   : Data Engineering → AI Data Platform
-Status      : Gold complete. Descending into Power BI.
-Foundation  : Domain Knowledge + Technical Depth + Trusted Data
-Scale       : 20,928,599 Silver records · 3 years · 36 partitions
+---
 
-Building in public. Domain first. Code second. Evidence always.
+# 🚀 Roadmap
+
+| Stage | Status |
+|---|---|
+| Source validation | ✅ Complete |
+| Bronze layer | ✅ Complete |
+| Silver layer | ✅ Complete |
+| Gold dimensional model | ✅ Complete |
+| Azure validation | ✅ Complete |
+| Power BI analytics | 🔲 Next |
+| REST API | 🔲 Planned |
+| Semantic / business layer | 🔲 Planned |
+| AI Analyst interface | 🔲 Planned |
+
+### Long-term direction
+
+**Trusted Data → Semantic Understanding → AI Analysis → Business Decision Support**
+
+The objective is not simply to add AI to a data pipeline.
+
+The objective is to build the **trusted data foundation that makes AI analysis defensible.**
+
+---
+
+# 📂 Projects
+
+### ✈️ BTS Aviation Delay Intelligence
+20M+ US flight records · PySpark · Azure Databricks · ADLS Gen2 · Star Schema
+
+👉 [View Repository](https://github.com/Shivakumarr18/BTS-Aviation-Delay-Intelligence)
+
+### 🛫 NASA ASRS Pipelines
+Aviation safety data engineering pipeline using Python, SQL and structured transformation workflows.
+
+👉 [View Repository](https://github.com/Shivakumarr18/NASA-ASRS-Pipelines)
+
+### 📚 Data Engineering Interview Prep
+SQL · Python · PySpark · Data Engineering interview preparation.
+
+👉 [View Repository](https://github.com/Shivakumarr18/DE-Interview-Prep)
+
+---
+
+<div align="center">
+
+### Building in public.
+
+**Domain first. Code second. Evidence always.**
+
+✈️ Aviation · Data Engineering · Cloud · AI Platforms
+
+</div>
