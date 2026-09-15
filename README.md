@@ -73,7 +73,7 @@ The system transforms raw flight records into a validated analytical model desig
 | Monthly partitions | **36** |
 | Raw data | ~4 GB |
 | Carriers | 15 |
-| Airports | 294 |
+| Airports | 362 |
 
 ---
 
