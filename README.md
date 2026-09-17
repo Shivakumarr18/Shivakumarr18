@@ -52,28 +52,28 @@ The system transforms raw flight records into a validated analytical model desig
 
 ### Architecture
 
-| Stage | Status |
-|---|---|
-| Source validation | ✅ Complete |
-| Bronze layer | ✅ Complete |
-| Silver layer | ✅ Complete |
-| Gold dimensional model | ✅ Complete |
-| Azure validation | ✅ Complete |
+| Stage                     | Status      |
+| ------------------------- | ----------- |
+| Source validation         | ✅ Complete |
+| Bronze layer              | ✅ Complete |
+| Silver layer              | ✅ Complete |
+| Gold dimensional model    | ✅ Complete |
+| Azure validation          | ✅ Complete |
 | Semantic / business layer | ✅ Complete |
-| Power BI analytics | ✅ Complete |
-| REST API | 🔲 Planned |
-| AI Analyst interface | 🔲 Planned |
+| Power BI analytics        | ✅ Complete |
+| REST API                  | 🔲 Planned  |
+| AI Analyst interface      | 🔲 Planned  |
 
 ### Scale
 
-| Metric | Value |
-|---|---:|
-| Source period | Jan 2023 – Dec 2025 |
-| Silver records | **20,928,599** |
-| Monthly partitions | **36** |
-| Raw data | ~4 GB |
-| Carriers | 15 |
-| Airports | 362 |
+| Metric             |               Value |
+| ------------------ | ------------------: |
+| Source period      | Jan 2023 – Dec 2025 |
+| Silver records     |      **20,928,599** |
+| Monthly partitions |              **36** |
+| Raw data           |               ~4 GB |
+| Carriers           |                  15 |
+| Airports           |                 362 |
 
 ---
 
@@ -81,18 +81,18 @@ The system transforms raw flight records into a validated analytical model desig
 
 The Gold layer has been completed on Azure Databricks with explicit completion gates.
 
-| Validation | Result |
-|---|---:|
-| Gold artifacts | **9 / 9 PASS** |
-| Completion gates | **10 / 10 PASS** |
-| Grain duplicates | **0** |
-| NULL foreign keys | **0** |
-| Unknown dimension members | **Validated** |
-| Surrogate-key uniqueness | **Validated** |
-| Partitions | **36 / 36** |
-| Arrival-delay minutes | **152,637,336** |
-| Cancellations | **287,134** |
-| Bridge records | **7,072,280** |
+| Validation                |           Result |
+| ------------------------- | ---------------: |
+| Gold artifacts            |   **9 / 9 PASS** |
+| Completion gates          | **10 / 10 PASS** |
+| Grain duplicates          |            **0** |
+| NULL foreign keys         |            **0** |
+| Unknown dimension members |    **Validated** |
+| Surrogate-key uniqueness  |    **Validated** |
+| Partitions                |      **36 / 36** |
+| Arrival-delay minutes     |  **152,637,336** |
+| Cancellations             |      **287,134** |
+| Bridge records            |    **7,072,280** |
 
 **Azure evidence captured:** September 13, 2026
 
@@ -102,17 +102,17 @@ The Gold layer has been completed on Azure Databricks with explicit completion g
 
 The analytical model currently contains:
 
-| Artifact | Purpose |
-|---|---|
-| `dim_date` | Date analysis |
-| `dim_carrier` | Carrier analysis |
-| `dim_airport` | Airport analysis |
-| `dim_aircraft` | Aircraft / tail-number analysis |
-| `dim_delay_reason` | Delay-cause analysis |
-| `fact_delays` | Core flight-delay facts |
+| Artifact                     | Purpose                         |
+| ---------------------------- | ------------------------------- |
+| `dim_date`                   | Date analysis                   |
+| `dim_carrier`                | Carrier analysis                |
+| `dim_airport`                | Airport analysis                |
+| `dim_aircraft`               | Aircraft / tail-number analysis |
+| `dim_delay_reason`           | Delay-cause analysis            |
+| `fact_delays`                | Core flight-delay facts         |
 | `bridge_flight_delay_reason` | Multi-cause delay relationships |
-| `model_cost_scenario` | Cost sensitivity assumptions |
-| `model_delay_cost` | Modeled delay-cost outputs |
+| `model_cost_scenario`        | Cost sensitivity assumptions    |
+| `model_delay_cost`           | Modeled delay-cost outputs      |
 
 ---
 
@@ -128,29 +128,29 @@ This prevents analytical assumptions from being presented as source facts.
 
 ### Key architecture decisions
 
-| Decision | Reason |
-|---|---|
-| Snapshot dimensions | BTS does not provide sufficient history for justified SCD2 |
-| Bridge table | A flight can have multiple reported delay causes |
-| `operational_influence_class` | Avoids unsupported claims about controllability |
-| Separate cost models | Observed metrics and modeled assumptions remain distinct |
-| Tail-number aircraft key | Avoids unnecessary fan-out across carriers |
+| Decision                      | Reason                                                     |
+| ----------------------------- | ---------------------------------------------------------- |
+| Snapshot dimensions           | BTS does not provide sufficient history for justified SCD2 |
+| Bridge table                  | A flight can have multiple reported delay causes           |
+| `operational_influence_class` | Avoids unsupported claims about controllability            |
+| Separate cost models          | Observed metrics and modeled assumptions remain distinct   |
+| Tail-number aircraft key      | Avoids unnecessary fan-out across carriers                 |
 
 ---
 
 # 🛠️ Technical Stack
 
-| Area | Technologies |
-|---|---|
-| Languages | Python · SQL |
-| Processing | PySpark |
-| Cloud | Microsoft Azure |
-| Compute | Azure Databricks |
-| Storage | ADLS Gen2 · Parquet |
-| Architecture | Medallion Architecture |
-| Data Modeling | Kimball Star Schema |
-| Orchestration | Azure Data Factory |
-| Visualization | Power BI |
+| Area             | Technologies            |
+| ---------------- | ----------------------- |
+| Languages        | Python · SQL            |
+| Processing       | PySpark                 |
+| Cloud            | Microsoft Azure         |
+| Compute          | Azure Databricks        |
+| Storage          | ADLS Gen2 · Parquet     |
+| Architecture     | Medallion Architecture  |
+| Data Modeling    | Kimball Star Schema     |
+| Orchestration    | Azure Data Factory      |
+| Visualization    | Power BI                |
 | Future Interface | REST API · AI Interface |
 
 ---
@@ -199,17 +199,17 @@ The goal is to clearly distinguish what the available data can demonstrate from 
 
 # 🚀 Roadmap
 
-| Stage | Status |
-|---|---|
-| Source validation | ✅ Complete |
-| Bronze layer | ✅ Complete |
-| Silver layer | ✅ Complete |
-| Gold dimensional model | ✅ Complete |
-| Azure validation | ✅ Complete |
+| Stage                     | Status      |
+| ------------------------- | ----------- |
+| Source validation         | ✅ Complete |
+| Bronze layer              | ✅ Complete |
+| Silver layer              | ✅ Complete |
+| Gold dimensional model    | ✅ Complete |
+| Azure validation          | ✅ Complete |
 | Semantic / business layer | ✅ Complete |
-| Power BI analytics | ✅ Complete |
-| REST API | 🔲 Planned |
-| AI Analyst interface | 🔲 Planned |
+| Power BI analytics        | ✅ Complete |
+| REST API                  | 🔲 Planned  |
+| AI Analyst interface      | 🔲 Planned  |
 
 ### Long-term direction
 
@@ -221,9 +221,10 @@ The objective is to build the **trusted data foundation that makes AI analysis d
 
 ---
 
-# 📂 Projects
+# 📂 Projects :
 
 ### ✈️ BTS Aviation Delay Intelligence — Core Project
+
 20M+ US flight records · PySpark · Azure Databricks · ADLS Gen2 · Kimball Star Schema
 
 End-to-end medallion pipeline on 3 years of US domestic flight data.
@@ -234,6 +235,7 @@ Bronze → Silver → Gold. 9/9 artifacts. 10/10 completion gates. Azure validat
 ---
 
 ### 🛫 NASA ASRS Pipelines — Practice Project
+
 Aviation safety data engineering pipeline built before the core project.
 Python · SQL · MySQL · Medallion architecture · 4,500 NASA safety reports.
 
