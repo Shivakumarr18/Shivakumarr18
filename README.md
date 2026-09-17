@@ -206,8 +206,8 @@ The goal is to clearly distinguish what the available data can demonstrate from 
 | Silver layer | ✅ Complete |
 | Gold dimensional model | ✅ Complete |
 | Azure validation | ✅ Complete |
-| Semantic / business layer | 🔲 Next |
-| Power BI analytics | 🔲 Planned |
+| Semantic / business layer | ✅ Complete |
+| Power BI analytics | ✅ Complete |
 | REST API | 🔲 Planned |
 | AI Analyst interface | 🔲 Planned |
 
