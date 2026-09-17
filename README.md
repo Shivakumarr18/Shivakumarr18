@@ -59,8 +59,8 @@ The system transforms raw flight records into a validated analytical model desig
 | Silver layer | ✅ Complete |
 | Gold dimensional model | ✅ Complete |
 | Azure validation | ✅ Complete |
-| Semantic / business layer | 🔲 Next |
-| Power BI analytics | 🔲 Planned |
+| Semantic / business layer | ✅ Complete |
+| Power BI analytics | ✅ Complete |
 | REST API | 🔲 Planned |
 | AI Analyst interface | 🔲 Planned |
 
