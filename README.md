@@ -61,8 +61,8 @@ The system transforms raw flight records into a validated analytical model desig
 | Azure validation          | ✅ Complete |
 | Semantic / business layer | ✅ Complete |
 | Power BI analytics        | ✅ Complete |
-| REST API                  | 🔲 Planned  |
-| AI Analyst interface      | 🔲 Planned  |
+| REST API                  | ✅ Complete |
+| AI Analyst interface      | ✅ Complete |
 
 ### Scale
 
@@ -208,8 +208,8 @@ The goal is to clearly distinguish what the available data can demonstrate from 
 | Azure validation          | ✅ Complete |
 | Semantic / business layer | ✅ Complete |
 | Power BI analytics        | ✅ Complete |
-| REST API                  | 🔲 Planned  |
-| AI Analyst interface      | 🔲 Planned  |
+| REST API                  | ✅ Complete |
+| AI Analyst interface      | ✅ Complete |
 
 ### Long-term direction
 
