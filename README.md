@@ -25,7 +25,7 @@ Building reliable data systems for aviation analytics — with a long-term focus
 
 ## 👋 About
 
-I'm an Associate Engineer at **CAMP Systems**, working in aviation software and building toward Data Engineering.
+I’m an Associate Engineer at CAMP Systems, building data pipelines and quality checks for aviation maintenance data.
 
 My current focus is on developing strong foundations in:
 
